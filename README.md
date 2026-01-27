@@ -1,1 +1,1 @@
-Khoa learns low level programming
+Khoa learns low-level programming
