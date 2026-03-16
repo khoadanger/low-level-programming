@@ -17,10 +17,24 @@ void initArray(DynamicArray *A, size_t intitialCapacity) {
 // add element
 void insertArray(DynamicArray *A, int element) {
     if (A->size == A->capacity) {
-        A->capacity *= 2;
+        A->capacity += 1;
         A->data = realloc(A->data, A->capacity * sizeof(int));
     }
     A->data[A->size++] = element;
+}
+
+// deleteElement
+void deleteElement(DynamicArray *A, size_t index) {
+    if (index >= A->size) {
+        printf("index %zu out of bounds.", index);
+        return;
+    }
+
+    for (int i = index; i < A->size - 1; i++) {
+        A->data[i] = A->data[i + 1];
+    }
+    A->size--;
+    A->capacity--;
 }
 
 // free memory
@@ -30,16 +44,25 @@ void freeArray(DynamicArray *A) {
     A->size = A->capacity = 0;
 }
 
+
+void showinfo(DynamicArray *A) {
+    printf("Element at index 3: %d\n", A->data[3]);
+    printf("Current size %zu, Capacity: %zu\n", A->size, A->capacity);
+    return;
+}
 int main() {
     DynamicArray arr;
     initArray(&arr, 2);
 
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 50; i++) {
         insertArray(&arr, i * 10);
     }
 
-    printf("Element at index 3: %d\n", arr.data[3]);
-    printf("Current size: %zu, Capacity: %zu\n", arr.size, arr.capacity);
+    showinfo(&arr);
+
+    deleteElement(&arr, 3);
+
+    showinfo(&arr);
 
     freeArray(&arr);
 
