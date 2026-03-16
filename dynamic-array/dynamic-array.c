@@ -46,7 +46,7 @@ void freeArray(DynamicArray *A) {
 
 
 void showinfo(DynamicArray *A) {
-    printf("Element at index 3: %d\n", A->data[3]);
+    printf("Element at index 5: %d\n", A->data[5]);
     printf("Current size %zu, Capacity: %zu\n", A->size, A->capacity);
     return;
 }
