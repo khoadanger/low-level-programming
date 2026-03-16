@@ -1,1 +1,11 @@
-**/run.*
+# executables
+**/run
+**/*.out
+**/*.exe
+
+# object files
+**/*.o
+**/*.obj
+
+# build folders
+build/
