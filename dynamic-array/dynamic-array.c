@@ -34,7 +34,7 @@ void deleteElement(DynamicArray *A, size_t index) {
         A->data[i] = A->data[i + 1];
     }
     A->size--;
-    A->capacity--;
+
 }
 
 // free memory
@@ -44,6 +44,15 @@ void freeArray(DynamicArray *A) {
     A->size = A->capacity = 0;
 }
 
+
+// pop element (delete the last element)
+int pop(DynamicArray *A) {
+    if (A->size == 0) {
+        printf("Array is empty.");
+        exit(1);
+    }
+    return A->data[--A->size];
+}
 
 void showinfo(DynamicArray *A) {
     printf("Element at index 5: %d\n", A->data[5]);
